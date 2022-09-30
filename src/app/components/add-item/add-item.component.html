@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Add Lost Item</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+          <h4>Track Number: {{itemForm.value.trackNumber}}</h4>
+          <div class="form-group mb-3">
+            <label for="date">Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="date"
+              placeholder="Enter date..."
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="description">Description:</label>
+            <input
+              type="description"
+              class="form-control"
+              formControlName="description"
+              placeholder="Enter description..."
+            />
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Province</label>
+            <select class="form-control" formControlName="province">
+              <option disabled>Select province...</option>
+              <option *ngFor="let province of provinces" [value]="province">{{province}}</option>
+            </select>
+          </div>
+          <div class="form-group mb-3 d-grid">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!itemForm.valid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <p class="text-end">
+          <a [routerLink]="['/items']" class="btn btn-link">Back</a>
+        </p>
+    </div>
+  </div>
+</div>
